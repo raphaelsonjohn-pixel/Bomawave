@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bomawave | Digital Infrastructure for SMEs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1 class="fade-slow">Bomawave</h1>
+    <p class="tagline fade-slow delay-1">
+      Empowering Africa's SMEs and informal retailers with smart digital infrastructure to manage inventory, access credit, and grow sustainably.
+    </p>
+    <a href="#waitlist" class="btn-scroll fade-slow delay-2">Join the Waitlist</a>
+  </header>
+
+  <!-- PROBLEM -->
+  <section class="card highlight fade-slow delay-3">
+    <h2>The Challenge SMEs Face</h2>
+    <p>
+      Millions of small retailers in Africa still operate manually—tracking orders on paper, relying on phone calls, and lacking proper records. 
+      This prevents them from accessing financing, managing stock efficiently, and scaling their business. Many lose revenue, experience supply gaps, 
+      and remain invisible to financiers and investors.
+    </p>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="card fade-slow delay-4">
+    <h2>Our Solution</h2>
+    <p>
+      Bomawave provides a lightweight digital platform that automatically captures transactions, tracks inventory, 
+      and builds a credible financial footprint for SMEs. Retailers gain visibility into their operations, wholesalers 
+      receive accurate demand data, and financiers can assess creditworthiness with reliable real-time information.
+    </p>
+    <p>
+      Our expertise in finance, credit management, risk analysis, and the business environment ensures that we design solutions 
+      that are practical, scalable, and directly relevant to the African SME ecosystem.
+    </p>
+  </section>
+
+  <!-- TARGET AUDIENCE -->
+  <section class="card fade-slow delay-5">
+    <h2>Who We Build For</h2>
+    <p>
+      We focus on informal retailers and small business owners who struggle with manual operations. By digitizing their sales, orders, 
+      and inventory, we unlock growth potential, provide access to smart financing, and make their businesses sustainable and investment-ready.
+    </p>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist fade-slow delay-6" id="waitlist">
+    <h2>Join the Waitlist</h2>
+    <p>Start digitizing your orders today and build your business credit profile.</p>
+
+    <form id="waitlistForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <button type="submit">Join Now</button>
+    </form>
+
+    <p id="successMessage" class="hidden">✅ You’re on the waitlist! We’ll contact you soon.</p>
+
+    <div class="whatsapp">
+      <p>Prefer instant access?</p>
+      <a href="https://wa.me/255696230657" target="_blank">Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="card fade-slow delay-7 contact">
+  <h2>Contact Us</h2>
+
+  <div class="contact-info">
+
+    <!-- Email (opens Gmail directly) -->
+    <p>
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M2 4h20v16H2V4zm10 7L3 6h18l-9 5z"/>
+      </svg>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@bomawave.com" target="_blank" class="hover-link">
+        info@bomawave.com
+      </a>
+    </p>
+
+    <!-- Gmail (Founder Email) -->
+    <p>
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M2 6l10 7 10-7v12H2V6zm10 5L2 6h20l-10 5z"/>
+      </svg>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeljumajohn@gmail.com" target="_blank" class="hover-link">
+        raphaeljumajohn@gmail.com
+      </a>
+    </p>
+
+    <!-- WhatsApp (ICON + NUMBER) -->
+    <p>
+      <a href="https://wa.me/255696230657" target="_blank" class="whatsapp-contact">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.87L2 22l5.27-1.23A9.96 9.96 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+        </svg>
+        <span>+255 696 230 657</span>
+      </a>
+    </p>
+
+    <!-- Location -->
+    <p class="location">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+      </svg>
+      Morogoro, Mazimbu
+    </p>
+
+  </div>
+</section>
+
+  <!-- INLINE JAVASCRIPT -->
+  <script>
+    // Smooth scroll for buttons
+    document.querySelectorAll('.btn-scroll').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(btn.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Waitlist form submission
+    document.getElementById("waitlistForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      if(name && phone){
+        document.getElementById("successMessage").classList.remove("hidden");
+        document.getElementById("waitlistForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

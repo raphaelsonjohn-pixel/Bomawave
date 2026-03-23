@@ -1,0 +1,194 @@
+/* GENERAL */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+/* HERO */
+header.hero {
+  background: linear-gradient(135deg, #0a2540, #1a4f7a);
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+header.hero h1 {
+  font-size: 48px;
+  margin: 0;
+}
+header.hero .tagline {
+  font-size: 22px;
+  margin: 20px 0;
+}
+header.hero .btn-scroll {
+  display: inline-block;
+  background: #98e2c4;
+  color: #0a2540;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+header.hero .btn-scroll:hover {
+  transform: translateY(-3px);
+  background: #7fd9b5;
+}
+
+/* CARD SECTIONS */
+.card {
+  background: white;
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 20px;
+}
+.card.highlight {
+  border-left: 6px solid #1a4f7a;
+}
+
+/* WAITLIST */
+.waitlist {
+  background: #e1f4ea;
+  padding: 100px 20px;
+  text-align: center;
+}
+.waitlist input {
+  width: 90%;
+  max-width: 450px;
+  padding: 16px;
+  margin: 14px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+}
+.waitlist button {
+  padding: 16px 32px;
+  background: #1a4f7a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+.waitlist button:hover {
+  background-color: #0a2540;
+}
+.hidden { display: none; }
+.whatsapp {
+  margin-top: 20px;
+}
+.whatsapp a {
+  background: #25D366;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+.whatsapp a:hover {
+  transform: translateY(-3px);
+}
+
+/* CONTACT */
+/* CONTACT SECTION */
+.contact {
+  background: #f0f9f5;
+  padding: 60px 40px;
+  max-width: 800px;
+  margin: 50px auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.contact h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #0a2540;
+}
+
+/* ICON STYLE */
+.icon {
+  width: 22px;
+  height: 22px;
+  fill: #1a4f7a;
+}
+
+/* CONTACT ITEMS */
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* LINKS */
+.hover-link {
+  color: #1a4f7a;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.hover-link:hover {
+  color: #0a2540;
+  border-bottom: 1px solid #0a2540;
+  transform: translateY(-2px);
+}
+
+/* WhatsApp with number */
+.whatsapp-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #25D366;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-contact svg {
+  width: 26px;
+  height: 26px;
+  fill: #25D366;
+}
+
+.whatsapp-contact:hover {
+  transform: translateY(-2px);
+}
+
+/* LOCATION */
+.location {
+  font-weight: bold;
+  color: #0a2540;
+}
+/* FADE-IN ANIMATION */
+.fade-slow {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+.fade-slow.delay-1 { animation-delay: 0.5s; }
+.fade-slow.delay-2 { animation-delay: 1s; }
+.fade-slow.delay-3 { animation-delay: 1.5s; }
+.fade-slow.delay-4 { animation-delay: 2s; }
+.fade-slow.delay-5 { animation-delay: 2.5s; }
+.fade-slow.delay-6 { animation-delay: 3s; }
+.fade-slow.delay-7 { animation-delay: 3.5s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
