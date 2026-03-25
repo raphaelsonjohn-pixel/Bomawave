@@ -126,28 +126,131 @@ gtag('config', 'G-XG5BFYFQQ5');
   </div>
 </section>
 
-  <!-- INLINE JAVASCRIPT -->
-  <script>
-    // Smooth scroll for buttons
-    document.querySelectorAll('.btn-scroll').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(btn.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-      });
+ <!--- INLINE JAVASCRIPT --->
+<script>
+// Smooth scroll for buttons
+document.querySelectorAll('.btn-scroll').forEach(btn => {
+    btn.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(btn.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
     });
+});
 
-    // Waitlist form submission
-    document.getElementById("waitlistForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      if(name && phone){
-        document.getElementById("successMessage").classList.remove("hidden");
+// Waitlist form submission with Google Sheets
+// REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT URL
+const WEB_APP_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+
+document.getElementById("waitlistForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const location = document.getElementById("location").value.trim();
+    
+    // Validate all fields
+    if (!name || !phone || !email || !location) {
+        showMessage('Please fill in all fields', 'error');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showMessage('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    // Disable submit button
+    const submitBtn = document.querySelector('#waitlistForm button');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Send data to Google Sheets
+        const response = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                email: email,
+                location: location,
+                timestamp: new Date().toISOString()
+            })
+        });
+        
+        // Show success message
+        const successMsg = document.getElementById("successMessage");
+        if (successMsg) {
+            successMsg.classList.remove("hidden");
+        } else {
+            showMessage('✅ You\'re on the waitlist! We\'ll contact you soon.', 'success');
+        }
+        
+        // Reset form
         document.getElementById("waitlistForm").reset();
-      }
-    });
-  </script>
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            if (successMsg) {
+                successMsg.classList.add("hidden");
+            }
+            const msgDiv = document.getElementById('formMessage');
+            if (msgDiv) msgDiv.style.display = 'none';
+        }, 5000);
+        
+    } catch(error) {
+        console.error('Error:', error);
+        showMessage('Something went wrong. Please try again.', 'error');
+    } finally {
+        // Re-enable submit button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
 
+// Helper function to show messages
+function showMessage(msg, type) {
+    let msgDiv = document.getElementById('formMessage');
+    
+    if (!msgDiv) {
+        // Create message div if it doesn't exist
+        msgDiv = document.createElement('div');
+        msgDiv.id = 'formMessage';
+        const form = document.getElementById("waitlistForm");
+        form.parentNode.insertBefore(msgDiv, form.nextSibling);
+    }
+    
+    msgDiv.style.display = 'block';
+    msgDiv.textContent = msg;
+    
+    if (type === 'success') {
+        msgDiv.style.backgroundColor = '#d4edda';
+        msgDiv.style.color = '#155724';
+        msgDiv.style.padding = '10px';
+        msgDiv.style.borderRadius = '5px';
+        msgDiv.style.marginTop = '15px';
+        msgDiv.style.border = '1px solid #c3e6cb';
+    } else if (type === 'error') {
+        msgDiv.style.backgroundColor = '#f8d7da';
+        msgDiv.style.color = '#721c24';
+        msgDiv.style.padding = '10px';
+        msgDiv.style.borderRadius = '5px';
+        msgDiv.style.marginTop = '15px';
+        msgDiv.style.border = '1px solid #f5c6cb';
+    }
+    
+    setTimeout(() => {
+        msgDiv.style.display = 'none';
+    }, 5000);
+}
+</script>
 </body>
 </html>
